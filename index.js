@@ -8,7 +8,7 @@ const codeBlockParams = {
     title: 'none',
     language: 'none',
     borderStyle: 'solid',
-    theme: 'RDark', // dark is good
+    theme: 'Midnight', // dark is good
     linenumbers: true,
     collapse: true,
   },
