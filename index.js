@@ -88,18 +88,18 @@ const defaultRenderer = {
    *
    * turns into
    *
-   *   h1. Heading 1
+   *   h0. Heading 1
    *
-   *   h1. Heading 1 alternate
+   *   h0. Heading 1 alternate
    *
-   *   h6. Heading 6
+   *   h5. Heading 6
    *
    * @param {string} text
    * @param {number} level
    * @return {string}
    */
   heading: function (text, level) {
-    return `h${level}. ${text}\n\n`;
+    return `h${level-1}. ${text}\n\n`;
   },
   /**
    * Creates strong text.
