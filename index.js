@@ -5,17 +5,20 @@ const defaultLanguageMap = require('./defaultLanguageMap.json');
 
 const codeBlockParams = {
   options: {
-    title: 'none',
-    language: 'none',
+    //title: undefined,
+    //language: undefined,
     borderStyle: 'solid',
     theme: 'Midnight', // dark is good
-    linenumbers: true,
-    collapse: true,
+    linenumbers: false,
+    collapse: false,
   },
 
   get(lang) {
     const codeOptions = this.options;
-    codeOptions.language = lang;
+
+    if(lang) {
+      codeOptions.language = lang;
+    }
 
     return codeOptions;
   },
