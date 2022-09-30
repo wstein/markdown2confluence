@@ -19,6 +19,7 @@
   "php": "php",
   "powershell": "powershell",
   "python": "python",
+  "output": "sample-output",
   "ruby": "ruby",
   "scala": "scala",
   "shell": "bash",

@@ -382,9 +382,28 @@ const defaultRenderer = {
   code: function (text, lang) {
     lang = defaultLanguageMap[(lang ?? '').toLowerCase()];
 
-    const param = qs.stringify(codeBlockParams.get(lang), '|', '=');
-    return `{code:${param}}\n${text}\n{code}\n\n`;
+    switch (lang) {
+      case 'sample-output':
+        return this.preformattedText(text, "samp", "output");
+      default:
+        const param = qs.stringify(codeBlockParams.get(lang), '|', '=');
+        return `{code:${param}}\n${text}\n{code}\n\n`;
+    }
   },
+
+  /**
+   * Insert simple preformatted text. https://www.w3schools.com/tags/tag_pre.asp
+   * 
+   * @param {string} Text
+   * @param {string} type (code, samp, kbd, var)
+   * @param {string} lang
+   * @return {string}
+   */
+   preformattedText: function (text, type, lang) {
+    // Currently only code is supported: https://confluence.atlassian.com/display/CONF42/Confluence+Storage+Format
+    type = "code";
+    return `<pre><${type} class="language-${lang}">${text}</${type}></pre>`;
+  }
 };
 
 const markdown2confluence = (markdown, options) => {
